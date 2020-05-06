@@ -3,10 +3,7 @@ import { graphql, Link } from 'gatsby';
 import Layout from './layout';
 import {
   Paragraph,
-  List,
-  ListItem,
   Heading,
-  Card,
   Subheading,
 } from '@contentful/forma-36-react-components';
 import Sidebar from '../components/sidebar';
