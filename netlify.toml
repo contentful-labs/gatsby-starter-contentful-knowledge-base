@@ -2,5 +2,9 @@
   incoming-hooks = ["Contentful"]
 
 [template.environment]
-  CONTENTFUL_API_TOKEN = ""
   CONTENTFUL_SPACE_ID = ""
+  CONTENTFUL_API_TOKEN = ""
+
+[build]
+  publish = "build/"
+  command = "npm run build"
