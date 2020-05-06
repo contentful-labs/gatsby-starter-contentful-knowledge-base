@@ -23,9 +23,11 @@ export default function Section(props) {
 
           {props.data.subCategories.edges.map(({ node }) => (
             <div key={node.slug} className="f36-margin-bottom--2xl">
-              <Subheading className="f36-margin-bottom--xs">{node.name}</Subheading>
+              <Subheading className="f36-margin-bottom--xs">
+                {node.name}
+              </Subheading>
 
-              {node.articles.map((article) => (
+              {node.articles?.map((article) => (
                 <Paragraph key={article.slug}>
                   <Link
                     to={`/${props.data.category.slug}/${node.slug}/${article.slug}/`}
