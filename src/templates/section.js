@@ -1,46 +1,79 @@
 import React from 'react';
+import { graphql, Link } from 'gatsby';
+import Layout from './layout';
+import {
+  Paragraph,
+  List,
+  ListItem,
+  Heading,
+  Card,
+  Subheading,
+} from '@contentful/forma-36-react-components';
+import Sidebar from '../components/sidebar';
 
-function Section() {
+export default function Section(props) {
+  console.log(props);
+
   return (
-    <section>
-      <h1>Account & Personal Details</h1>
+    <Layout>
+      <div className="content">
+        <Sidebar data={props.data.categories.edges} />
 
-      <ul>
-        <li>
-          <a href="#">Opening an account</a>
+        <section>
+          <Heading className="f36-margin-bottom--l">
+            {props.data.category.name}
+          </Heading>
 
-          <ul>
-            <li><a href="#">Can I open an account in my country?</a></li>
-            <li><a href="#">Can I open an account in my country?</a></li>
-            <li><a href="#">Can I open an account in my country?</a></li>
-            <li><a href="#">Can I open an account in my country?</a></li>
-          </ul>  
-        </li>
+          {props.data.subCategories.edges.map(({ node }) => (
+            <div key={node.slug} className="f36-margin-bottom--2xl">
+              <Subheading className="f36-margin-bottom--xs">{node.name}</Subheading>
 
-        <li>
-          <a href="#">Opening an account</a>
-
-          <ul>
-            <li><a href="#">Can I open an account in my country?</a></li>
-            <li><a href="#">Can I open an account in my country?</a></li>
-            <li><a href="#">Can I open an account in my country?</a></li>
-            <li><a href="#">Can I open an account in my country?</a></li>
-          </ul>  
-        </li>
-
-        <li>
-          <a href="#">Opening an account</a>
-
-          <ul>
-            <li><a href="#">Can I open an account in my country?</a></li>
-            <li><a href="#">Can I open an account in my country?</a></li>
-            <li><a href="#">Can I open an account in my country?</a></li>
-            <li><a href="#">Can I open an account in my country?</a></li>
-          </ul>  
-        </li>
-      </ul>
-    </section>
+              {node.articles.map((article) => (
+                <Paragraph key={article.slug}>
+                  <Link
+                    to={`/${props.data.category.slug}/${node.slug}/${article.slug}/`}
+                  >
+                    {article.title}
+                  </Link>
+                </Paragraph>
+              ))}
+            </div>
+          ))}
+        </section>
+      </div>
+    </Layout>
   );
 }
 
-export default Section;
+export const query = graphql`
+  query PageData($slug: String) {
+    categories: allContentfulHelpCenterCategory {
+      edges {
+        node {
+          name
+          slug
+        }
+      }
+    }
+
+    subCategories: allContentfulHelpCenterSubCategory(
+      filter: { category: { slug: { eq: $slug } } }
+    ) {
+      edges {
+        node {
+          name
+          slug
+          articles: helpcenter___article {
+            title
+            slug
+          }
+        }
+      }
+    }
+
+    category: contentfulHelpCenterCategory(slug: { eq: $slug }) {
+      name
+      slug
+    }
+  }
+`;

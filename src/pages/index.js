@@ -10,13 +10,17 @@ import Layout from '../templates/layout';
 export default function Home(props) {
   return (
     <Layout>
-      <Subheading>Categories</Subheading>
+      <Subheading className="f36-margin-bottom--l">Categories</Subheading>
 
-      {props.data.categories.edges.map(({ node }) => (
-        <Card padding="large" href={`/${node.slug}/`}>
-          <Paragraph>{node.name}</Paragraph>
-        </Card>
-      ))}
+      <div className="grid">
+        {props.data.categories.edges.map(({ node }) => (
+          <Card padding="large" key={node.slug} className="f36-margin-bottom--l">
+            <Paragraph>
+              <Link to={`/${node.slug}/`}>{node.name}</Link>
+            </Paragraph>
+          </Card>
+        ))}
+      </div>
     </Layout>
   );
 }

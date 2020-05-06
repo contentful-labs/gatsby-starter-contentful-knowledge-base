@@ -1,5 +1,12 @@
-.container {
+.wrap {
   max-width: 960px;
   margin: 0 auto;
   padding: 0 16px;
+}
+
+.header {
+  padding: 20px 0;
+  margin-bottom: 30px;
+
+  background-color: #a8dadc;
 }

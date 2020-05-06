@@ -24,6 +24,8 @@
   "dependencies": {
     "@contentful/forma-36-fcss": "0.0.35",
     "@contentful/forma-36-react-components": "^3.37.1",
+    "@contentful/rich-text-html-renderer": "^13.4.0",
+    "contentful": "^7.14.4",
     "gatsby": "^2.21.11",
     "gatsby-source-contentful": "^2.3.2",
     "react": "^16.13.1",

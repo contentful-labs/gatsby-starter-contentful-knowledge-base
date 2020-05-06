@@ -1,21 +1,50 @@
 import React from 'react';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import { Heading } from '@contentful/forma-36-react-components';
+import Layout from './layout';
+import Sidebar from '../components/sidebar';
+import './article.css';
 
-function Article() {
+export default function Article(props) {
   return (
-    <article>
-      <h1>Article title</h1>
+    <Layout>
+      <div className="content">
+        <Sidebar data={props.data.categories.edges} />
 
-      <section>
-        <p>Content</p>
-        <p>Content</p>
-        <p>Content</p>
-        <p>Content</p>
-        <p>Content</p>
-        <p>Content</p>
-        <p>Content</p>
-      </section>
-    </article>
+        <article>
+          <Heading className="f36-margin-bottom--l">
+            {props.data.article.title}
+          </Heading>
+
+          <section
+            className="article-content"
+            dangerouslySetInnerHTML={{
+              __html: documentToHtmlString(props.data.article.content.json),
+            }}
+          />
+        </article>
+      </div>
+    </Layout>
   );
 }
 
-export default Article;
+export const query = graphql`
+  query Article($slug: String) {
+    categories: allContentfulHelpCenterCategory {
+      edges {
+        node {
+          name
+          slug
+        }
+      }
+    }
+
+    article: contentfulHelpCenterArticle(slug: { eq: $slug }) {
+      title
+      slug
+      content {
+        json
+      }
+    }
+  }
+`;
