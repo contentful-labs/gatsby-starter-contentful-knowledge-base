@@ -6,5 +6,5 @@
   CONTENTFUL_API_TOKEN = ""
 
 [build]
-  publish = "build/"
+  publish = "public/"
   command = "npm run build"
