@@ -1,4 +1,5 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { Heading } from '@contentful/forma-36-react-components';
 import Layout from './layout';
