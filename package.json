@@ -1,0 +1,33 @@
+{
+  "name": "help-center-marketplace-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/contentful/help-center-marketplace-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/contentful/help-center-marketplace-app/issues"
+  },
+  "homepage": "https://github.com/contentful/help-center-marketplace-app#readme",
+  "dependencies": {
+    "gatsby": "^2.21.11",
+    "gatsby-source-contentful": "^2.3.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}

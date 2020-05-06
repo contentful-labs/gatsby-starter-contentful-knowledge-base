@@ -1,0 +1,6 @@
+[template]
+  incoming-hooks = ["Contentful"]
+
+[template.environment]
+  CONTENTFUL_API_TOKEN = ""
+  CONTENTFUL_SPACE_ID = ""
