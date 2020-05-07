@@ -2,11 +2,7 @@ const path = require('path');
 const sectionTemplate = path.resolve('src/templates/section.js');
 const articleTemplate = path.resolve('src/templates/article.js');
 
-exports.createPages = async ({
-  graphql,
-  actions: { createPage },
-  reporter,
-}) => {
+exports.createPages = async ({ graphql, actions: { createPage } }) => {
   const result = await graphql(`
     query {
       categories: allContentfulHelpCenterCategory {
