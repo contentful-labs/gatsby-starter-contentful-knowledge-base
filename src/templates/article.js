@@ -10,17 +10,17 @@ export default function Article(props) {
   return (
     <Layout>
       <div className="content">
-        <Sidebar data={props.data.categories.edges} />
+        <Sidebar data={props.data?.categories?.edges} />
 
         <article>
           <Heading className="f36-margin-bottom--l">
-            {props.data.article.title}
+            {props.data?.article?.title}
           </Heading>
 
           <section
             className="article-content"
             dangerouslySetInnerHTML={{
-              __html: documentToHtmlString(props.data.article.content.json),
+              __html: documentToHtmlString(props.data?.article?.content?.json),
             }}
           />
         </article>

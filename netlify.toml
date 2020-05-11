@@ -4,6 +4,7 @@
 [template.environment]
   CONTENTFUL_SPACE_ID = ""
   CONTENTFUL_API_TOKEN = ""
+  CONTENTFUL_PREVIEW_TOKEN = ""
 
 [build]
   publish = "public/"

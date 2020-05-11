@@ -13,8 +13,12 @@ export default function Home(props) {
       <Subheading className="f36-margin-bottom--l">Categories</Subheading>
 
       <div className="grid">
-        {props.data.categories.edges.map(({ node }) => (
-          <Card padding="large" key={node.slug} className="f36-margin-bottom--l">
+        {props.data?.categories?.edges.map(({ node }) => (
+          <Card
+            padding="large"
+            key={node.slug}
+            className="f36-margin-bottom--l"
+          >
             <Paragraph>
               <Link to={`/${node.slug}/`}>{node.name}</Link>
             </Paragraph>
@@ -26,7 +30,7 @@ export default function Home(props) {
 }
 
 export const query = graphql`
-  query ContentfulCategories {
+  {
     categories: allContentfulHelpCenterCategory {
       edges {
         node {

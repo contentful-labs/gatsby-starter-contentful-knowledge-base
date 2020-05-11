@@ -14,7 +14,7 @@ function Layout(props) {
         </div>
       </header>
 
-      <main class="wrap">{props.children}</main>
+      <main className="wrap">{props.children}</main>
     </>
   );
 }
