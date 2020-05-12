@@ -1,7 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import { Heading } from '@contentful/forma-36-react-components';
 import Layout from './layout';
 import Sidebar from '../components/sidebar';
 
@@ -12,9 +11,7 @@ export default function Article(props) {
         <Sidebar data={props.data?.categories?.edges} />
 
         <article>
-          <Heading className="f36-margin-bottom--l">
-            {props.data?.article?.title}
-          </Heading>
+          <h1>{props.data?.article?.title}</h1>
 
           <section
             className="article-content"
