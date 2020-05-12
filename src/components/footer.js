@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { Link } from 'gatsby';
 import Wrap from './wrap';
 
 const FooterContainer = styled.footer`
@@ -94,7 +95,9 @@ export default function Footer(props) {
     <Wrap>
       <FooterContainer>
         <LogoContainer>
-          <Logo />
+          <Link to="/">
+            <Logo />
+          </Link>
         </LogoContainer>
 
         <LinksContainer>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import { Link } from 'gatsby';
 import Wrap from './wrap';
 import { HamburgerIcon, CloseIcon } from './icons';
 
@@ -119,9 +120,9 @@ export default function Header(props) {
   return (
     <Wrap>
       <HeaderContainerDesktop>
-        <div>
+        <Link to="/">
           <Logo />
-        </div>
+        </Link>
         <LinksNav>
           {props.links?.map((link) => (
             <Anchor href={link.url} target="_blank" rel="noopener noreferrer">
