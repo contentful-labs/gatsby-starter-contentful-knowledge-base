@@ -4,7 +4,6 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { Heading } from '@contentful/forma-36-react-components';
 import Layout from './layout';
 import Sidebar from '../components/sidebar';
-import './article.css';
 
 export default function Article(props) {
   return (
