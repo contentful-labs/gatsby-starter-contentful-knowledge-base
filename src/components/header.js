@@ -117,6 +117,14 @@ function Logo() {
 export default function Header(props) {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
 
+  function openMenu() {
+    setIsMenuOpened(true);
+  }
+
+  function closeMenu() {
+    setIsMenuOpened(false);
+  }
+
   return (
     <Wrap>
       <HeaderContainerDesktop>
@@ -139,16 +147,16 @@ export default function Header(props) {
           </Link>
         </div>
 
-        <HamburgerIcon onClick={() => setIsMenuOpened(true)} />
+        <HamburgerIcon onClick={openMenu} />
       </HeaderContainerMobile>
 
       {isMenuOpened && (
         <MobileContainer>
           <MobileMenuLogoContainer>
-            <Link to="/" onClick={() => setIsMenuOpened(false)}>
+            <Link to="/" onClick={closeMenu}>
               <Logo />
             </Link>
-            <CloseIcon onClick={() => setIsMenuOpened(false)} />
+            <CloseIcon onClick={closeMenu} />
           </MobileMenuLogoContainer>
 
           <MobileMenu>
