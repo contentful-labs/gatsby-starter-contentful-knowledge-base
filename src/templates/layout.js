@@ -1,20 +1,23 @@
 import * as React from 'react';
-import { Heading } from '@contentful/forma-36-react-components';
-import './layout.css';
-import { Link } from 'gatsby';
+import Header from '../components/header';
+import Footer from '../components/footer';
+import Wrap from '../components/wrap';
 
 function Layout(props) {
+  // TODO: to be removed
+  const links = [
+    { url: 'https://www.bk.com', label: 'Visit bk.com' },
+    { url: 'https://www.bk.com', label: 'Privacy Policy' },
+    { url: 'https://www.bk.com', label: 'Cookies Policy' },
+  ];
+
   return (
     <>
-      <header className="header">
-        <div className="wrap">
-          <Heading className="logo">
-            <Link to="/">Help Center</Link>
-          </Heading>
-        </div>
-      </header>
+      <Header links={links} />
 
-      <main className="wrap">{props.children}</main>
+      <Wrap>{props.children}</Wrap>
+
+      <Footer links={links} />
     </>
   );
 }
