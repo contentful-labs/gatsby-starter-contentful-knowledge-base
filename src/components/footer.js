@@ -68,7 +68,7 @@ function Logo() {
       width="90"
       height="90"
     >
-      <g fill-rule="nonzero" fill="none">
+      <g fillRule="nonzero" fill="none">
         <path
           d="M0 44.647C0 19.989 19.985 0 44.645 0c24.66 0 44.644 19.989 44.644 44.647 0 24.655-19.984 44.646-44.645 44.646C19.985 89.293 0 69.303 0 44.647"
           fill="#FEFEFE"
