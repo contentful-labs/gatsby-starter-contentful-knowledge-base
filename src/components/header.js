@@ -134,7 +134,9 @@ export default function Header(props) {
 
       <HeaderContainerMobile>
         <div>
-          <Logo />
+          <Link to="/">
+            <Logo />
+          </Link>
         </div>
 
         <HamburgerIcon onClick={() => setIsMenuOpened(true)} />
@@ -143,7 +145,9 @@ export default function Header(props) {
       {isMenuOpened && (
         <MobileContainer>
           <MobileMenuLogoContainer>
-            <Logo />
+            <Link to="/" onClick={() => setIsMenuOpened(false)}>
+              <Logo />
+            </Link>
             <CloseIcon onClick={() => setIsMenuOpened(false)} />
           </MobileMenuLogoContainer>
 
