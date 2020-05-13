@@ -81,7 +81,7 @@ const ArticleContentContainer = styled.section`
     padding: 8px 0 8px 32px;
 
     line-height: 2;
-    
+
     border-left: 5px solid #efefef;
   }
 

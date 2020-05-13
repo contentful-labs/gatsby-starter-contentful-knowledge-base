@@ -18,6 +18,8 @@ const Container = styled.div`
 `;
 
 const Title = styled.h3`
+  margin: 0;
+
   color: #3072be;
   font-size: 21px;
   line-height: 1.5;
@@ -35,6 +37,8 @@ const Title = styled.h3`
 `;
 
 const Text = styled.p`
+  margin: 0;
+
   color: #536171;
   font-size: 14px;
   line-height: 1.5;

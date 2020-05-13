@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { Link as GatsbyLink } from 'gatsby';
 
 const Text = styled.p`
+  margin: 0;
   padding: 20px 0;
 
   font-size: 16px;
