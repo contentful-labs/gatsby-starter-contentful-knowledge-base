@@ -78,6 +78,7 @@ const ArticleContentContainer = styled.section`
   }
 
   blockquote {
+    margin-left: 0;
     padding: 8px 0 8px 32px;
 
     line-height: 2;
