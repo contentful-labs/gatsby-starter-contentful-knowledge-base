@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/contentful/help-center-marketplace-app#readme",
   "dependencies": {
-    "@contentful/rich-text-html-renderer": "^13.4.0",
+    "@contentful/rich-text-react-renderer": "^13.4.0",
     "@contentful/rich-text-types": "^14.1.0",
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",

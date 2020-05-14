@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { BLOCKS } from '@contentful/rich-text-types';
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import styled from '@emotion/styled';
 import Layout from './layout';
 import WhiteContainer from '../components/white-container';
@@ -15,7 +15,12 @@ const rendererOptions = ({ locale = 'en-US' }) => ({
 
       // check for images only
       if (data.target.fields.file[locale].contentType.startsWith('image')) {
-        return `<img src="${data.target.fields.file[locale].url}" alt="${data.target.fields.title[locale]}" />`;
+        return (
+          <img
+            src={data.target.fields.file[locale].url}
+            alt={data.target.fields.title[locale]}
+          />
+        );
       }
     },
   },
@@ -109,14 +114,12 @@ export default function Article(props) {
         <ArticleTitle>{props.data.article.title}</ArticleTitle>
 
         <WhiteContainer>
-          <ArticleContentContainer
-            dangerouslySetInnerHTML={{
-              __html: documentToHtmlString(
-                props.data.article.body.json,
-                rendererOptions({ locale: article.locale }),
-              ),
-            }}
-          />
+          <ArticleContentContainer>
+            {documentToReactComponents(
+              props.data.article.body.json,
+              rendererOptions({ locale: article.locale }),
+            )}
+          </ArticleContentContainer>
         </WhiteContainer>
       </article>
     </Layout>
