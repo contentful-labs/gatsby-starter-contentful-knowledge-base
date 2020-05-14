@@ -2,24 +2,24 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import styled from '@emotion/styled';
 import Layout from './layout';
 import WhiteContainer from '../components/white-container';
-import styled from '@emotion/styled';
 import Breadcrumb from '../components/breadcrumb';
 
-const rendererOptions = {
+const rendererOptions = ({ locale = 'en-US' }) => ({
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: ({ data }) => {
       // check for assets only
       if (data.target.sys.type !== 'Asset') return;
 
       // check for images only
-      if (data.target.fields.file['en-US'].contentType.startsWith('image')) {
-        return `<img src="${data.target.fields.file['en-US'].url}" alt="${data.target.fields.title['en-US']}" />`;
+      if (data.target.fields.file[locale].contentType.startsWith('image')) {
+        return `<img src="${data.target.fields.file[locale].url}" alt="${data.target.fields.title[locale]}" />`;
       }
     },
   },
-};
+});
 
 const ArticleTitle = styled.h1`
   margin-bottom: 32px;
@@ -113,7 +113,7 @@ export default function Article(props) {
             dangerouslySetInnerHTML={{
               __html: documentToHtmlString(
                 props.data.article.body.json,
-                rendererOptions,
+                rendererOptions({ locale: article.locale }),
               ),
             }}
           />
@@ -135,6 +135,7 @@ export const query = graphql`
         slug
         name
       }
+      locale: node_locale
     }
   }
 `;
