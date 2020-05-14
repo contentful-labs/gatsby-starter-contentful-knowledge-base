@@ -6,6 +6,7 @@ import styled from '@emotion/styled';
 import Layout from './layout';
 import WhiteContainer from '../components/white-container';
 import Breadcrumb from '../components/breadcrumb';
+import SEO from '../components/seo';
 
 const rendererOptions = ({ locale = 'en-US' }) => ({
   renderNode: {
@@ -102,6 +103,8 @@ export default function Article(props) {
 
   return (
     <Layout>
+      <SEO title={article.title} lang={article.locale} />
+
       <Breadcrumb
         paths={[
           { url: '/', name: 'All categories' },

@@ -23,5 +23,5 @@ export default function useSiteSettings() {
     }
   `);
 
-  return data.settings.nodes[0];
+  return data.settings.nodes?.[0] ?? {};
 }
