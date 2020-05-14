@@ -35,7 +35,14 @@ const Subtitle = styled.h2`
 `;
 
 const SearchContainer = styled.div`
+  width: 625px;
+  margin: 0 auto;
   margin-bottom: 44px;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 33px;
+  }
 `;
 
 export default function Home(props) {

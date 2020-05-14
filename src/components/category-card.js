@@ -3,8 +3,11 @@ import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 
 const Container = styled.div`
-  padding: 32px;
+  padding: 32px 32px 32px 64px;
 
+  background-image: url('/icons/icon-folder.svg');
+  background-repeat: no-repeat;
+  background-position: 24px 35px;
   background-color: #fff;
   border-bottom: 1px solid #d3dce0;
 
@@ -14,6 +17,8 @@ const Container = styled.div`
 
   @media screen and (max-width: 375px) {
     padding: 20px;
+
+    background-image: none;
   }
 `;
 

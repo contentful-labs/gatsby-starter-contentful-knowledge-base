@@ -30,10 +30,20 @@ const Text = styled.p`
 
     background-color: #d3dce0;
   }
+
+  @media screen and (max-width: 768px) {
+    padding: 24px 16px;
+    background: none;
+
+    &:not(:last-child):after {
+      left: 16px;
+      right: 16px;
+    }
+  }
 `;
 
 const Link = styled(GatsbyLink)`
-  color: #3C80CF;
+  color: #3c80cf;
   text-decoration: none;
 
   &:hover,

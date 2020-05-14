@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-const width = '30px';
+const width = '20px';
 
 const Button = styled.button`
   position: relative;
@@ -23,7 +23,7 @@ const Stripe = styled.span`
   height: 2px;
 
   border-radius: 3px;
-  background-color: #000;
+  background-color: #536171;
 `;
 
 const Cross = styled(Stripe)`
@@ -31,7 +31,7 @@ const Cross = styled(Stripe)`
   bottom: 30%;
   left: 0;
 
-  background-color: #fff;
+  background-color: #536171;
 `;
 
 const CrossOne = styled(Cross)`

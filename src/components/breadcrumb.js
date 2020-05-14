@@ -4,13 +4,14 @@ import styled from '@emotion/styled';
 
 const ListContainer = styled.ul`
   padding: 0;
-  margin: 0 0 32px;
+  margin: 0 0 24px;
 
   list-style-type: none;
 `;
 
 const ListItem = styled.li`
   display: inline-block;
+  margin: 4px 0;
 
   color: #8091a5;
   font-size: 14px;
@@ -29,7 +30,7 @@ const ListItem = styled.li`
     content: '>';
     margin: 0 4px;
 
-    color: #8F9EAF;
+    color: #8f9eaf;
   }
 `;
 

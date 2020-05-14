@@ -2,6 +2,8 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+console.log('config');
+
 module.exports = {
   plugins: [
     {
@@ -12,5 +14,37 @@ module.exports = {
       },
     },
     'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-plugin-local-search',
+      options: {
+        name: 'articles',
+        engine: 'flexsearch',
+        engineOptions: 'speed',
+        query: `
+            {
+              articles: allContentfulArticle {
+                nodes {
+                  contentful_id
+                  title
+                  slug
+                  category {
+                    slug
+                  }
+                }
+              }
+            }
+          `,
+
+        ref: 'id',
+        index: ['name'],
+        store: ['name', 'path'],
+        normalizer: ({ data }) =>
+          data.articles.nodes.map((node) => ({
+            id: node.contentful_id,
+            name: node.title,
+            path: `/${node.category.slug}/${node.slug}/`,
+          })),
+      },
+    },
   ],
 };

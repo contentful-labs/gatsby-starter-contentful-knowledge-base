@@ -35,6 +35,8 @@ const CategoryTitle = styled.h1`
 `;
 
 const CategoryDescription = styled.h2`
+  margin: 0;
+
   color: #536171;
   font-size: 21px;
   line-height: 1.5;
@@ -53,7 +55,7 @@ export default function Section(props) {
   const categoriesForSidebar = categories.nodes.filter(withArticles);
 
   return (
-    <Layout>
+    <Layout withSearch={true}>
       <SEO
         title={category.name}
         description={category.description.description}
