@@ -4,24 +4,20 @@ const articleTemplate = path.resolve('src/templates/article.js');
 
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
   const result = await graphql(`
-    query {
-      categories: allContentfulHelpCenterCategory {
-        edges {
-          node {
-            slug
-          }
+    {
+      categories: allContentfulCategory {
+        nodes {
+          id
+          slug
         }
       }
-      articles: allContentfulHelpCenterArticle {
-        edges {
-          node {
+
+      articles: allContentfulArticle {
+        nodes {
+          id
+          slug
+          category {
             slug
-            subCategory {
-              slug
-              category {
-                slug
-              }
-            }
           }
         }
       }
@@ -33,23 +29,23 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   }
 
   // Create category pages
-  result.data.categories.edges.forEach(({ node }) => {
+  result.data.categories.nodes.forEach((category) => {
     createPage({
-      path: node.slug,
+      path: category.slug,
       component: sectionTemplate,
       context: {
-        slug: node.slug,
+        id: category.id,
       },
     });
   });
 
   // Create article pages
-  result.data.articles.edges.forEach(({ node }) => {
+  result.data.articles.nodes.forEach((article) => {
     createPage({
-      path: `${node.subCategory.category.slug}/${node.subCategory.slug}/${node.slug}`,
+      path: `/${article.category.slug}/${article.slug}/`,
       component: articleTemplate,
       context: {
-        slug: node.slug,
+        id: article.id,
       },
     });
   });

@@ -54,28 +54,26 @@ export default function Section(props) {
 
         <Cell area="title-group">
           <TitleGroup>
-            <CategoryTitle>{props.data?.category?.name}</CategoryTitle>
+            <CategoryTitle>{props.data.category.name}</CategoryTitle>
             <CategoryDescription>
-              The basics of ordering BurgerKing
+              {props.data.category.description.description}
             </CategoryDescription>
           </TitleGroup>
         </Cell>
 
         <Cell area="sidebar">
-          <Sidebar data={props.data?.categories?.edges} />
+          <Sidebar data={props.data.categories.nodes} />
         </Cell>
 
         <Cell area="articles">
           <WhiteContainer>
             <ArticleContainer>
-              {props.data?.subCategories?.edges.map(({ node }) =>
-                node.articles?.map((article) => (
-                  <ArticleLink
-                    url={`/${props.data?.category?.slug}/${node.slug}/${article.slug}/`}
-                    label={article.title}
-                  />
-                )),
-              )}
+              {props.data.category.article.map((article) => (
+                <ArticleLink
+                  url={`/${props.data.category.slug}/${article.slug}/`}
+                  label={article.title}
+                />
+              ))}
             </ArticleContainer>
           </WhiteContainer>
         </Cell>
@@ -85,34 +83,24 @@ export default function Section(props) {
 }
 
 export const query = graphql`
-  query PageData($slug: String) {
-    categories: allContentfulHelpCenterCategory {
-      edges {
-        node {
-          name
-          slug
-        }
+  query PageData($id: String) {
+    categories: allContentfulCategory {
+      nodes {
+        name
+        slug
       }
     }
 
-    subCategories: allContentfulHelpCenterSubCategory(
-      filter: { category: { slug: { eq: $slug } } }
-    ) {
-      edges {
-        node {
-          name
-          slug
-          articles: helpcenter___article {
-            title
-            slug
-          }
-        }
-      }
-    }
-
-    category: contentfulHelpCenterCategory(slug: { eq: $slug }) {
+    category: contentfulCategory(id: { eq: $id }) {
       name
+      description {
+        description
+      }
       slug
+      article {
+        title
+        slug
+      }
     }
   }
 `;

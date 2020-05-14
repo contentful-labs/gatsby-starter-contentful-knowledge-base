@@ -85,13 +85,13 @@ export default function Sidebar(props) {
   return (
     <aside>
       <DesktopNav>
-        {props.data?.map(({ node }) => (
-          <Text key={node.slug}>
+        {props.data?.map((item) => (
+          <Text key={item.slug}>
             <Link
-              to={`/${node.slug}/`}
+              to={`/${item.slug}/`}
               activeStyle={{ color: '#000', textDecoration: 'underline' }}
             >
-              {node.name}
+              {item.name}
             </Link>
           </Text>
         ))}
@@ -107,13 +107,13 @@ export default function Sidebar(props) {
 
         {isMobileMenuOpened && (
           <MobileMenuLinksContainer>
-            {props.data?.map(({ node }) => (
-              <Text key={node.slug}>
+            {props.data?.map((item) => (
+              <Text key={item.slug}>
                 <Link
-                  to={`/${node.slug}/`}
+                  to={`/${item.slug}/`}
                   activeStyle={{ color: '#000', textDecoration: 'underline' }}
                 >
-                  {node.name}
+                  {item.name}
                 </Link>
               </Text>
             ))}

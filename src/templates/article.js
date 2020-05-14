@@ -95,13 +95,13 @@ export default function Article(props) {
   return (
     <Layout>
       <article>
-        <ArticleTitle>{props.data?.article?.title}</ArticleTitle>
+        <ArticleTitle>{props.data.article.title}</ArticleTitle>
 
         <WhiteContainer>
           <ArticleContentContainer
             dangerouslySetInnerHTML={{
               __html: documentToHtmlString(
-                props.data?.article?.content?.json,
+                props.data.article.body.json,
                 rendererOptions,
               ),
             }}
@@ -113,20 +113,11 @@ export default function Article(props) {
 }
 
 export const query = graphql`
-  query Article($slug: String) {
-    categories: allContentfulHelpCenterCategory {
-      edges {
-        node {
-          name
-          slug
-        }
-      }
-    }
-
-    article: contentfulHelpCenterArticle(slug: { eq: $slug }) {
+  query Article($id: String) {
+    article: contentfulArticle(id: { eq: $id }) {
       title
       slug
-      content {
+      body {
         json
       }
     }

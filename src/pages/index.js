@@ -31,21 +31,23 @@ const Subtitle = styled.h2`
 `;
 
 export default function Home(props) {
+  const settings = props.data.settings.nodes[0];
+
   return (
     <Layout>
       <Container>
         <Hgroup>
-          <Title>Welcome to the Burger King Help Center</Title>
-          <Subtitle>How can we help?</Subtitle>
+          <Title>{settings.heading}</Title>
+          <Subtitle>{settings.subheading}</Subtitle>
         </Hgroup>
 
-        {props.data?.categories?.edges && (
+        {props.data?.categories?.nodes && (
           <WhiteContainer>
-            {props.data.categories.edges.map(({ node }) => (
+            {props.data.categories.nodes.map((category) => (
               <CategoryCard
-                title={node.name}
-                url={`/${node.slug}/`}
-                description="Everything you need to know to get started with Contentful"
+                title={category.name}
+                url={`/${category.slug}/`}
+                description={category.description.description}
               />
             ))}
           </WhiteContainer>
@@ -56,13 +58,21 @@ export default function Home(props) {
 }
 
 export const query = graphql`
-  {
-    categories: allContentfulHelpCenterCategory {
-      edges {
-        node {
-          name
-          slug
+  query {
+    settings: allContentfulSiteSettings {
+      nodes {
+        heading
+        subheading
+      }
+    }
+
+    categories: allContentfulCategory {
+      nodes {
+        name
+        description {
+          description
         }
+        slug
       }
     }
   }
