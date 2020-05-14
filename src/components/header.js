@@ -92,7 +92,7 @@ function Logo() {
       width="60"
       height="60"
     >
-      <g fill-rule="nonzero" fill="none">
+      <g fillRule="nonzero" fill="none">
         <path
           d="M0 44.647C0 19.989 19.985 0 44.645 0c24.66 0 44.644 19.989 44.644 44.647 0 24.655-19.984 44.646-44.645 44.646C19.985 89.293 0 69.303 0 44.647"
           fill="#FEFEFE"
@@ -132,8 +132,13 @@ export default function Header(props) {
           <Logo />
         </Link>
         <LinksNav>
-          {props.links?.map((link) => (
-            <Anchor href={link.url} target="_blank" rel="noopener noreferrer">
+          {props.links?.map((link, index) => (
+            <Anchor
+              key={index}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {link.label}
             </Anchor>
           ))}
@@ -160,8 +165,8 @@ export default function Header(props) {
           </MobileMenuLogoContainer>
 
           <MobileMenu>
-            {props.links?.map((link) => (
-              <MobileMenuItem>
+            {props.links?.map((link, index) => (
+              <MobileMenuItem key={index}>
                 <MobileMenuAnchor
                   href={link.url}
                   target="_blank"
