@@ -7,6 +7,7 @@ import WhiteContainer from '../components/white-container';
 import { withArticles } from '../utils/filters';
 import useSiteSettings from '../hooks/useSiteSettings';
 import SEO from '../components/seo';
+import SearchForm from '../components/search-form';
 
 const Container = styled.div`
   max-width: 700px;
@@ -33,6 +34,10 @@ const Subtitle = styled.h2`
   font-weight: 400;
 `;
 
+const SearchContainer = styled.div`
+  margin-bottom: 44px;
+`;
+
 export default function Home(props) {
   const settings = useSiteSettings();
   const categories = props.data.categories.nodes.filter(withArticles);
@@ -46,6 +51,10 @@ export default function Home(props) {
           <Title>{settings.heading}</Title>
           <Subtitle>{settings.subheading}</Subtitle>
         </Hgroup>
+
+        <SearchContainer>
+          <SearchForm />
+        </SearchContainer>
 
         <WhiteContainer>
           {categories.map((category) => (

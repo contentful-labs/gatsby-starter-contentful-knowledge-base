@@ -22,9 +22,7 @@ const GridContainer = styled.div`
   }
 `;
 
-const ArticleContainer = styled.div`
-  padding: 12px 32px;
-`;
+const ArticleContainer = styled.div``;
 
 const CategoryTitle = styled.h1`
   margin-top: 0;

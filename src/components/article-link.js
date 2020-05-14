@@ -3,15 +3,32 @@ import styled from '@emotion/styled';
 import { Link as GatsbyLink } from 'gatsby';
 
 const Text = styled.p`
+  position: relative;
+
   margin: 0;
-  padding: 20px 0;
+  padding: 25px 36px 25px 80px;
 
   font-size: 16px;
+  line-height: 1.5;
 
-  border-bottom: 1px solid #d3dce0;
+  background-image: url('/icons/icon-file.svg');
+  background-repeat: no-repeat;
+  background-position: 36px center;
 
-  &:last-child {
-    border-bottom: 0;
+  &:hover {
+    background-color: #f8f9fa;
+  }
+
+  &:not(:last-child):after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 80px;
+    right: 36px;
+
+    height: 1px;
+
+    background-color: #d3dce0;
   }
 `;
 
