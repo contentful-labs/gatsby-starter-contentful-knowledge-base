@@ -5,6 +5,8 @@ import Layout from './layout';
 import Sidebar from '../components/sidebar';
 import WhiteContainer from '../components/white-container';
 import ArticleLink from '../components/article-link';
+import Breadcrumb from '../components/breadcrumb';
+import { withArticles } from '../utils/filters';
 
 const GridContainer = styled.div`
   display: grid;
@@ -24,6 +26,7 @@ const ArticleContainer = styled.div`
 `;
 
 const CategoryTitle = styled.h1`
+  margin-top: 0;
   margin-bottom: 12px;
 
   color: #2a3039;
@@ -47,35 +50,40 @@ const Cell = styled.div`
 `;
 
 export default function Section(props) {
+  const { categories, category } = props.data;
+  const categoriesForSidebar = categories.nodes.filter(withArticles);
+
   return (
     <Layout>
+      <Breadcrumb
+        paths={[{ url: '/', name: 'All categories' }, { name: category.name }]}
+      />
+
       <GridContainer>
         <Cell area="empty"></Cell>
 
         <Cell area="title-group">
           <TitleGroup>
-            <CategoryTitle>{props.data?.category?.name}</CategoryTitle>
+            <CategoryTitle>{category.name}</CategoryTitle>
             <CategoryDescription>
-              The basics of ordering BurgerKing
+              {category.description.description}
             </CategoryDescription>
           </TitleGroup>
         </Cell>
 
         <Cell area="sidebar">
-          <Sidebar data={props.data?.categories?.edges} />
+          <Sidebar data={categoriesForSidebar} />
         </Cell>
 
         <Cell area="articles">
           <WhiteContainer>
             <ArticleContainer>
-              {props.data?.subCategories?.edges.map(({ node }) =>
-                node.articles?.map((article) => (
-                  <ArticleLink
-                    url={`/${props.data?.category?.slug}/${node.slug}/${article.slug}/`}
-                    label={article.title}
-                  />
-                )),
-              )}
+              {category.articles.map((article) => (
+                <ArticleLink
+                  url={`/${category.slug}/${article.slug}/`}
+                  label={article.title}
+                />
+              ))}
             </ArticleContainer>
           </WhiteContainer>
         </Cell>
@@ -85,34 +93,27 @@ export default function Section(props) {
 }
 
 export const query = graphql`
-  query PageData($slug: String) {
-    categories: allContentfulHelpCenterCategory {
-      edges {
-        node {
-          name
-          slug
+  query PageData($id: String) {
+    categories: allContentfulCategory {
+      nodes {
+        name
+        slug
+        articles: article {
+          id
         }
       }
     }
 
-    subCategories: allContentfulHelpCenterSubCategory(
-      filter: { category: { slug: { eq: $slug } } }
-    ) {
-      edges {
-        node {
-          name
-          slug
-          articles: helpcenter___article {
-            title
-            slug
-          }
-        }
-      }
-    }
-
-    category: contentfulHelpCenterCategory(slug: { eq: $slug }) {
+    category: contentfulCategory(id: { eq: $id }) {
       name
+      description {
+        description
+      }
       slug
+      articles: article {
+        title
+        slug
+      }
     }
   }
 `;

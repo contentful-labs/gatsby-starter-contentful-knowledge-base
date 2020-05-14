@@ -1,24 +1,30 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { BLOCKS } from '@contentful/rich-text-types';
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import styled from '@emotion/styled';
 import Layout from './layout';
 import WhiteContainer from '../components/white-container';
-import styled from '@emotion/styled';
+import Breadcrumb from '../components/breadcrumb';
 
-const rendererOptions = {
+const rendererOptions = ({ locale = 'en-US' }) => ({
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: ({ data }) => {
       // check for assets only
       if (data.target.sys.type !== 'Asset') return;
 
       // check for images only
-      if (data.target.fields.file['en-US'].contentType.startsWith('image')) {
-        return `<img src="${data.target.fields.file['en-US'].url}" alt="${data.target.fields.title['en-US']}" />`;
+      if (data.target.fields.file[locale].contentType.startsWith('image')) {
+        return (
+          <img
+            src={data.target.fields.file[locale].url}
+            alt={data.target.fields.title[locale]}
+          />
+        );
       }
     },
   },
-};
+});
 
 const ArticleTitle = styled.h1`
   margin-bottom: 32px;
@@ -92,20 +98,28 @@ const ArticleContentContainer = styled.section`
 `;
 
 export default function Article(props) {
+  const { article } = props.data;
+
   return (
     <Layout>
+      <Breadcrumb
+        paths={[
+          { url: '/', name: 'All categories' },
+          { url: `/${article.category.slug}/`, name: article.category.name },
+          { name: article.title },
+        ]}
+      />
+
       <article>
-        <ArticleTitle>{props.data?.article?.title}</ArticleTitle>
+        <ArticleTitle>{props.data.article.title}</ArticleTitle>
 
         <WhiteContainer>
-          <ArticleContentContainer
-            dangerouslySetInnerHTML={{
-              __html: documentToHtmlString(
-                props.data?.article?.content?.json,
-                rendererOptions,
-              ),
-            }}
-          />
+          <ArticleContentContainer>
+            {documentToReactComponents(
+              props.data.article.body.json,
+              rendererOptions({ locale: article.locale }),
+            )}
+          </ArticleContentContainer>
         </WhiteContainer>
       </article>
     </Layout>
@@ -113,22 +127,18 @@ export default function Article(props) {
 }
 
 export const query = graphql`
-  query Article($slug: String) {
-    categories: allContentfulHelpCenterCategory {
-      edges {
-        node {
-          name
-          slug
-        }
-      }
-    }
-
-    article: contentfulHelpCenterArticle(slug: { eq: $slug }) {
+  query Article($id: String) {
+    article: contentfulArticle(id: { eq: $id }) {
       title
       slug
-      content {
+      body {
         json
       }
+      category {
+        slug
+        name
+      }
+      locale: node_locale
     }
   }
 `;
