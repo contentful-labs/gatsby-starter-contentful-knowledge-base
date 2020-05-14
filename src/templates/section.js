@@ -7,6 +7,7 @@ import WhiteContainer from '../components/white-container';
 import ArticleLink from '../components/article-link';
 import Breadcrumb from '../components/breadcrumb';
 import { withArticles } from '../utils/filters';
+import SEO from '../components/seo';
 
 const GridContainer = styled.div`
   display: grid;
@@ -55,6 +56,12 @@ export default function Section(props) {
 
   return (
     <Layout>
+      <SEO
+        title={category.name}
+        description={category.description.description}
+        lang={category.locale}
+      />
+
       <Breadcrumb
         paths={[{ url: '/', name: 'All categories' }, { name: category.name }]}
       />
@@ -114,6 +121,7 @@ export const query = graphql`
         title
         slug
       }
+      locale: node_locale
     }
   }
 `;

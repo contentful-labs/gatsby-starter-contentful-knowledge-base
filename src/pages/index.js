@@ -5,6 +5,8 @@ import Layout from '../templates/layout';
 import CategoryCard from '../components/category-card';
 import WhiteContainer from '../components/white-container';
 import { withArticles } from '../utils/filters';
+import useSiteSettings from '../hooks/useSiteSettings';
+import SEO from '../components/seo';
 
 const Container = styled.div`
   max-width: 700px;
@@ -32,11 +34,13 @@ const Subtitle = styled.h2`
 `;
 
 export default function Home(props) {
-  const settings = props.data.settings.nodes[0];
+  const settings = useSiteSettings();
   const categories = props.data.categories.nodes.filter(withArticles);
 
   return (
     <Layout>
+      <SEO title={settings.heading} description={settings.subheading} />
+
       <Container>
         <Hgroup>
           <Title>{settings.heading}</Title>
@@ -59,13 +63,6 @@ export default function Home(props) {
 
 export const query = graphql`
   query {
-    settings: allContentfulSiteSettings {
-      nodes {
-        heading
-        subheading
-      }
-    }
-
     categories: allContentfulCategory {
       nodes {
         name
