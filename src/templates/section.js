@@ -6,9 +6,7 @@ import Sidebar from '../components/sidebar';
 import WhiteContainer from '../components/white-container';
 import ArticleLink from '../components/article-link';
 import Breadcrumb from '../components/breadcrumb';
-
-const withArticles = (category) =>
-  Array.isArray(category.articles) && category.articles.length > 0;
+import { withArticles } from '../utils/filters';
 
 const GridContainer = styled.div`
   display: grid;

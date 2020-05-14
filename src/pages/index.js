@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import Layout from '../templates/layout';
 import CategoryCard from '../components/category-card';
 import WhiteContainer from '../components/white-container';
+import { withArticles } from '../utils/filters';
 
 const Container = styled.div`
   max-width: 700px;
@@ -32,6 +33,7 @@ const Subtitle = styled.h2`
 
 export default function Home(props) {
   const settings = props.data.settings.nodes[0];
+  const categories = props.data.categories.nodes.filter(withArticles);
 
   return (
     <Layout>
@@ -41,17 +43,15 @@ export default function Home(props) {
           <Subtitle>{settings.subheading}</Subtitle>
         </Hgroup>
 
-        {props.data?.categories?.nodes && (
-          <WhiteContainer>
-            {props.data.categories.nodes.map((category) => (
-              <CategoryCard
-                title={category.name}
-                url={`/${category.slug}/`}
-                description={category.description.description}
-              />
-            ))}
-          </WhiteContainer>
-        )}
+        <WhiteContainer>
+          {categories.map((category) => (
+            <CategoryCard
+              title={category.name}
+              url={`/${category.slug}/`}
+              description={category.description.description}
+            />
+          ))}
+        </WhiteContainer>
       </Container>
     </Layout>
   );
@@ -73,6 +73,9 @@ export const query = graphql`
           description
         }
         slug
+        articles: article {
+          id
+        }
       }
     }
   }
