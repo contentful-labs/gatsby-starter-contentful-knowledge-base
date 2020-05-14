@@ -38,7 +38,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
 
   categories.forEach((category) => {
     createPage({
-      path: category.slug,
+      path: `/${category.slug}/`,
       component: sectionTemplate,
       context: {
         id: category.id,
@@ -49,7 +49,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   // Create article pages
   result.data.articles.nodes.forEach((article) => {
     createPage({
-      path: `${article.category.slug}/${article.slug}`,
+      path: `/${article.category.slug}/${article.slug}/`,
       component: articleTemplate,
       context: {
         id: article.id,
