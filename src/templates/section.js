@@ -5,6 +5,10 @@ import Layout from './layout';
 import Sidebar from '../components/sidebar';
 import WhiteContainer from '../components/white-container';
 import ArticleLink from '../components/article-link';
+import Breadcrumb from '../components/breadcrumb';
+
+const withArticles = (category) =>
+  Array.isArray(category.articles) && category.articles.length > 0;
 
 const GridContainer = styled.div`
   display: grid;
@@ -24,6 +28,7 @@ const ArticleContainer = styled.div`
 `;
 
 const CategoryTitle = styled.h1`
+  margin-top: 0;
   margin-bottom: 12px;
 
   color: #2a3039;
@@ -47,30 +52,37 @@ const Cell = styled.div`
 `;
 
 export default function Section(props) {
+  const { categories, category } = props.data;
+  const categoriesForSidebar = categories.nodes.filter(withArticles);
+
   return (
     <Layout>
+      <Breadcrumb
+        paths={[{ url: '/', name: 'All categories' }, { name: category.name }]}
+      />
+
       <GridContainer>
         <Cell area="empty"></Cell>
 
         <Cell area="title-group">
           <TitleGroup>
-            <CategoryTitle>{props.data.category.name}</CategoryTitle>
+            <CategoryTitle>{category.name}</CategoryTitle>
             <CategoryDescription>
-              {props.data.category.description.description}
+              {category.description.description}
             </CategoryDescription>
           </TitleGroup>
         </Cell>
 
         <Cell area="sidebar">
-          <Sidebar data={props.data.categories.nodes} />
+          <Sidebar data={categoriesForSidebar} />
         </Cell>
 
         <Cell area="articles">
           <WhiteContainer>
             <ArticleContainer>
-              {props.data.category.article.map((article) => (
+              {category.articles.map((article) => (
                 <ArticleLink
-                  url={`/${props.data.category.slug}/${article.slug}/`}
+                  url={`/${category.slug}/${article.slug}/`}
                   label={article.title}
                 />
               ))}
@@ -88,6 +100,9 @@ export const query = graphql`
       nodes {
         name
         slug
+        articles: article {
+          id
+        }
       }
     }
 
@@ -97,7 +112,7 @@ export const query = graphql`
         description
       }
       slug
-      article {
+      articles: article {
         title
         slug
       }

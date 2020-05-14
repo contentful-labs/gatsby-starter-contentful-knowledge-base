@@ -5,6 +5,7 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import Layout from './layout';
 import WhiteContainer from '../components/white-container';
 import styled from '@emotion/styled';
+import Breadcrumb from '../components/breadcrumb';
 
 const rendererOptions = {
   renderNode: {
@@ -92,8 +93,18 @@ const ArticleContentContainer = styled.section`
 `;
 
 export default function Article(props) {
+  const { article } = props.data;
+
   return (
     <Layout>
+      <Breadcrumb
+        paths={[
+          { url: '/', name: 'All categories' },
+          { url: `/${article.category.slug}/`, name: article.category.name },
+          { name: article.title },
+        ]}
+      />
+
       <article>
         <ArticleTitle>{props.data.article.title}</ArticleTitle>
 
@@ -119,6 +130,10 @@ export const query = graphql`
       slug
       body {
         json
+      }
+      category {
+        slug
+        name
       }
     }
   }

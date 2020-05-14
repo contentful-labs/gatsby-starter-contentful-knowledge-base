@@ -9,6 +9,9 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
         nodes {
           id
           slug
+          articles: article {
+            id
+          }
         }
       }
 
@@ -29,7 +32,11 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   }
 
   // Create category pages
-  result.data.categories.nodes.forEach((category) => {
+  const withArticles = (category) =>
+    Array.isArray(category.articles) && category.articles.length > 0;
+  const categories = result.data.categories.nodes.filter(withArticles);
+
+  categories.forEach((category) => {
     createPage({
       path: category.slug,
       component: sectionTemplate,
@@ -42,7 +49,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   // Create article pages
   result.data.articles.nodes.forEach((article) => {
     createPage({
-      path: `/${article.category.slug}/${article.slug}/`,
+      path: `${article.category.slug}/${article.slug}`,
       component: articleTemplate,
       context: {
         id: article.id,
