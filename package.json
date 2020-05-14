@@ -30,7 +30,8 @@
     "gatsby-source-contentful": "^2.3.2",
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.0.0"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4"
