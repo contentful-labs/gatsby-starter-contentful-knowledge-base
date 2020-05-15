@@ -79,13 +79,6 @@ export default function Preview(props) {
     return categories;
   }
 
-  if (!params.get('entry'))
-    return (
-      <p>
-        <code>entry</code> query parameter is required.
-      </p>
-    );
-
   if (!data) return null;
 
   return <Article data={data} />;
