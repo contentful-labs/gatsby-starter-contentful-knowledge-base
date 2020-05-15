@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 import { useStaticQuery, graphql } from 'gatsby';
 import { useFlexSearch } from 'react-use-flexsearch';
 import ArticleLink from '../components/article-link';
 import WhiteContainer from './white-container';
 import { useDebounce } from '../hooks/useDebounce';
+import useOnClickOutside from '../hooks/useOnClickOutside';
 
 const Form = styled.form`
   position: relative;
@@ -59,6 +60,7 @@ const Text = styled.p`
 `;
 
 export default function SearchForm() {
+  const formRef = useRef();
   const [query, setQuery] = useState();
   const debouncedQuery = useDebounce(query, 500);
   const { localSearchArticles } = useStaticQuery(graphql`
@@ -77,15 +79,10 @@ export default function SearchForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [isResultsOpened, setIsResultsOpened] = useState(false);
 
-  function handleOnSubmit(event) {
-    event.preventDefault();
-
-    setQuery(event.target.elements.query.value);
-  }
-
-  function handleOnQueryChange(event) {
-    setQuery(event.target.value);
-  }
+  useOnClickOutside(formRef, () => {
+    setIsResultsOpened(false);
+    setIsLoading(false);
+  });
 
   useEffect(() => {
     setIsResultsOpened(!!debouncedQuery);
@@ -101,8 +98,18 @@ export default function SearchForm() {
     }
   }, [query]);
 
+  function handleOnSubmit(event) {
+    event.preventDefault();
+
+    setQuery(event.target.elements.query.value);
+  }
+
+  function handleOnQueryChange(event) {
+    setQuery(event.target.value);
+  }
+
   return (
-    <Form method="post" onSubmit={handleOnSubmit}>
+    <Form method="post" onSubmit={handleOnSubmit} ref={formRef}>
       <SearchField
         type="search"
         name="query"
