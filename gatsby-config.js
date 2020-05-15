@@ -44,5 +44,28 @@ module.exports = {
           })),
       },
     },
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        query: `
+          {
+            allSitePage {
+              nodes {
+                path
+              }
+            }
+          }
+        `,
+        resolveSiteUrl: () => {
+          return process.env.URL;
+        },
+        serialize: ({ allSitePage }) =>
+          allSitePage.nodes.map((node) => ({
+            url: `${process.env.URL}${node.path}`,
+            changefreq: 'daily',
+            priority: 0.7,
+          })),
+      },
+    },
   ],
 };

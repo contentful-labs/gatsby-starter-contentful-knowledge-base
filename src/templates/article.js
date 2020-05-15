@@ -107,7 +107,11 @@ export default function Article(props) {
 
   return (
     <Layout withSearch={true}>
-      <SEO title={article.title} lang={article.locale} />
+      <SEO
+        title={article.title}
+        description={article.description.description}
+        lang={article.locale}
+      />
 
       <Breadcrumb
         paths={[
@@ -138,6 +142,9 @@ export const query = graphql`
     article: contentfulArticle(id: { eq: $id }) {
       title
       slug
+      description {
+        description
+      }
       body {
         json
       }

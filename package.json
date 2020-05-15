@@ -29,6 +29,7 @@
     "gatsby": "^2.21.11",
     "gatsby-plugin-local-search": "^1.1.1",
     "gatsby-plugin-react-helmet": "^3.3.1",
+    "gatsby-plugin-sitemap": "^2.4.2",
     "gatsby-source-contentful": "^2.3.2",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
