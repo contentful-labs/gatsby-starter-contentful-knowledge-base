@@ -9,6 +9,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
         nodes {
           id
           slug
+          name
           articles: article {
             id
           }
@@ -19,6 +20,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
         nodes {
           id
           slug
+          title
           category {
             slug
           }
@@ -42,6 +44,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       component: sectionTemplate,
       context: {
         id: category.id,
+        name: category.name,
       },
     });
   });
@@ -53,6 +56,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       component: articleTemplate,
       context: {
         id: article.id,
+        name: article.title,
       },
     });
   });

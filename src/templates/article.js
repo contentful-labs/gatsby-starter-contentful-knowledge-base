@@ -33,6 +33,10 @@ const ArticleTitle = styled.h1`
   color: #2a3039;
   font-weight: 700;
   font-size: 28px;
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const ArticleContentContainer = styled.section`
@@ -102,7 +106,7 @@ export default function Article(props) {
   const { article } = props.data;
 
   return (
-    <Layout>
+    <Layout withSearch={true}>
       <SEO title={article.title} lang={article.locale} />
 
       <Breadcrumb

@@ -4,14 +4,17 @@ import { Link } from 'gatsby';
 import Wrap from './wrap';
 import { HamburgerIcon, CloseIcon } from './icons';
 
+const HeaderWrap = styled(Wrap)`
+  margin-bottom: 12px;
+
+  border-bottom: 1px solid #d3dce0;
+`;
+
 const HeaderContainerDesktop = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 32px 0 26px;
-  margin-bottom: 32px;
-
-  border-bottom: 1px solid #d3dce0;
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -50,13 +53,26 @@ const LinksNav = styled.nav`
 const MobileContainer = styled.div`
   position: fixed;
   top: 0;
-  left: 0;
+  left: 50px;
+  right: 0;
   z-index: 999999;
+
+  width: calc(100% - 50px);
+  height: 100%;
+
+  background-color: #fff;
+`;
+
+const MobileOverlay = styled.div`
+  position: fixed;
+  z-index: 999998;
+  left: 0;
+  top: 0;
 
   width: 100%;
   height: 100%;
 
-  background-color: #3072be;
+  background-color: rgba(0, 0, 0, 0.39);
 `;
 
 const MobileMenu = styled.ul`
@@ -67,8 +83,6 @@ const MobileMenu = styled.ul`
 
 const MobileMenuItem = styled.li`
   padding: 10px;
-
-  border-bottom: 1px solid rgba(24, 56, 95, 0.3);
 `;
 
 const MobileMenuLogoContainer = styled.div`
@@ -76,10 +90,12 @@ const MobileMenuLogoContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  border-bottom: 1px solid #d3dce0;
 `;
 
 const MobileMenuAnchor = styled(Anchor)`
-  color: #fff;
+  color: ##526171;
 `;
 
 export default function Header(props) {
@@ -98,7 +114,7 @@ export default function Header(props) {
   }
 
   return (
-    <Wrap>
+    <HeaderWrap>
       <HeaderContainerDesktop>
         <Link to="/">{renderLogo()}</Link>
         <LinksNav>
@@ -122,6 +138,8 @@ export default function Header(props) {
 
         <HamburgerIcon onClick={openMenu} />
       </HeaderContainerMobile>
+
+      {isMenuOpened && <MobileOverlay />}
 
       {isMenuOpened && (
         <MobileContainer>
@@ -147,6 +165,6 @@ export default function Header(props) {
           </MobileMenu>
         </MobileContainer>
       )}
-    </Wrap>
+    </HeaderWrap>
   );
 }

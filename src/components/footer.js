@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 import Wrap from './wrap';
 
 const FooterContainer = styled.footer`
-  margin-top: 70px;
+  margin-top: 32px;
   margin-bottom: 30px;
 
   text-align: center;
@@ -71,8 +71,13 @@ export default function Footer(props) {
         <LinksContainer>
           <LinksNav>
             {props.links?.map((link, key) => (
-              <Anchor href={link.url} key={key}>
-                {link.label}
+              <Anchor
+                href={link.url}
+                key={key}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.text}
               </Anchor>
             ))}
           </LinksNav>

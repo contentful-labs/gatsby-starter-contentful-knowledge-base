@@ -11,9 +11,32 @@ export default function Preview(props) {
   useEffect(() => {
     if (!params.get('entry')) return;
 
-    getDraftEntry();
-    getDraftCategories();
+    fetchContent();
   }, []);
+
+  async function fetchContent() {
+    const [draft, categories] = await Promise.all([
+      getDraftEntry(),
+      getDraftCategories(),
+    ]);
+    const category = await getDraftCategory(draft.fields.category.sys.id);
+
+    setData((currData) => ({
+      ...currData,
+      article: {
+        ...draft.fields,
+        body: {
+          json: draft.fields.body,
+        },
+        category: {
+          ...category.fields,
+        },
+      },
+      categories: {
+        edges: categories,
+      },
+    }));
+  }
 
   async function getDraftEntry() {
     const res = await fetch(
@@ -24,20 +47,24 @@ export default function Preview(props) {
 
     const json = await res.json();
 
-    setData((currData) => ({
-      ...currData,
-      article: {
-        ...json.fields,
-        content: {
-          json: json.fields.content,
-        },
-      },
-    }));
+    return json;
+  }
+
+  async function getDraftCategory(categoryId) {
+    const res = await fetch(
+      `${url}/entries/${categoryId}?access_token=${previewToken}`,
+    );
+
+    if (!res.ok) return;
+
+    const json = await res.json();
+
+    return json;
   }
 
   async function getDraftCategories() {
     const res = await fetch(
-      `${url}/entries/?content_type=helpCenterCategory&access_token=${previewToken}`,
+      `${url}/entries/?content_type=category&access_token=${previewToken}`,
     );
 
     if (!res.ok) return;
@@ -49,12 +76,7 @@ export default function Preview(props) {
         node: { ...category.fields },
       }));
 
-    setData((currData) => ({
-      ...currData,
-      categories: {
-        edges: categories,
-      },
-    }));
+    return categories;
   }
 
   if (!params.get('entry'))
