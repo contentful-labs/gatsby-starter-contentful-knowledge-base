@@ -67,5 +67,16 @@ module.exports = {
           })),
       },
     },
+    {
+      resolve: `gatsby-plugin-env-variables`,
+      options: {
+        whitelist: [
+          'CONTENTFUL_SPACE_ID',
+          'CONTENTFUL_API_TOKEN',
+          'CONTENTFUL_PREVIEW_TOKEN',
+          'URL',
+        ],
+      },
+    },
   ],
 };
