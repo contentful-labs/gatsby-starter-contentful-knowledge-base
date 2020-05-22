@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { Link as GatsbyLink } from 'gatsby';
 import Layout from '../templates/layout';
+import SEO from '../components/seo';
 
 const Title = styled.h1`
   margin-bottom: 12px;
