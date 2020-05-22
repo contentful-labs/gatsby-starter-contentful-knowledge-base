@@ -129,7 +129,7 @@ export default function SearchForm() {
 
           {!isLoading && !searchResults?.length && (
             <Text>
-              No results for <i>"{query}"</i>
+              No results for <i>&quot;{query}&quot;</i>
             </Text>
           )}
         </ResultsContainer>

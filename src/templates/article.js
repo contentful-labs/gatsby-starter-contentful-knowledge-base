@@ -1,4 +1,5 @@
 import React from 'react';
+import is from 'prop-types';
 import { graphql } from 'gatsby';
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
@@ -136,6 +137,25 @@ export default function Article(props) {
     </Layout>
   );
 }
+
+Article.propTypes = {
+  data: is.shape({
+    article: is.shape({
+      title: is.string.isRequired,
+      description: is.shape({
+        description: is.string.isRequired,
+      }).isRequired,
+      locale: is.string.isRequired,
+      category: is.shape({
+        slug: is.string.isRequired,
+        name: is.string.isRequired,
+      }).isRequired,
+      body: is.shape({
+        json: is.any.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export const query = graphql`
   query Article($id: String) {

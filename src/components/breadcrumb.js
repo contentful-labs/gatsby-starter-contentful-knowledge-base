@@ -1,4 +1,5 @@
 import React from 'react';
+import is from 'prop-types';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 
@@ -47,3 +48,12 @@ export default function Breadcrumb(props) {
     </ListContainer>
   );
 }
+
+Breadcrumb.propTypes = {
+  paths: is.arrayOf(
+    is.shape({
+      name: is.string.isRequired,
+      url: is.string,
+    }),
+  ),
+};

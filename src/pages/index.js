@@ -1,4 +1,5 @@
 import React from 'react';
+import is from 'prop-types';
 import { graphql } from 'gatsby';
 import styled from '@emotion/styled';
 import Layout from '../templates/layout';
@@ -80,6 +81,27 @@ export default function Home(props) {
     </Layout>
   );
 }
+
+Home.propTypes = {
+  data: is.shape({
+    categories: is.shape({
+      nodes: is.arrayOf(
+        is.shape({
+          name: is.string.isRequired,
+          slug: is.string.isRequired,
+          description: is.shape({
+            description: is.string.isRequired,
+          }).isRequired,
+          articles: is.arrayOf(
+            is.shape({
+              id: is.string.isRequired,
+            }),
+          ),
+        }),
+      ),
+    }).isRequired,
+  }).isRequired,
+};
 
 export const query = graphql`
   query {
