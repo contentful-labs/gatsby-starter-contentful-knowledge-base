@@ -27,16 +27,15 @@ const Link = styled(GatsbyLink)`
   &:focus {
     text-decoration: underline;
   }
-`
+`;
 
 export default function Article() {
   return (
     <Layout withSearch={true}>
-      {/* <SEO
-        title={article.title}
-        description={article.description.description}
-        lang={article.locale}
-      /> */}
+      <SEO
+        title="404 page not found"
+        description="The page you are looking for can’t be found."
+      />
 
       <Title>The page you are looking for can’t be found.</Title>
       <SubTitle>Error code: 404</SubTitle>
