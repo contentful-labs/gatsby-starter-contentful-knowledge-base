@@ -10,7 +10,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "eslint": "eslint 'src/**/*.js' --max-warnings=0",
-    "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|md|vue)\""
+    "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|md)\""
   },
   "husky": {
     "hooks": {
