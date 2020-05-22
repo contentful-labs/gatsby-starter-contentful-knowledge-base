@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
+import { Helmet } from 'react-helmet';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import Wrap from '../components/wrap';
@@ -53,6 +54,25 @@ export default function Layout(props) {
         logoUrl={settings.logo.fixed.src}
         logoDescription={settings.logo.title}
       />
+
+      <Helmet>
+        {settings.googleAnalyticsId && (
+          <script>
+            {`
+              window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+              
+              ga('create', '${settings.googleAnalyticsId}', 'auto');
+              ga('send', 'pageview');
+          `}
+          </script>
+        )}
+        {settings.googleAnalyticsId && (
+          <script
+            async
+            src="https://www.google-analytics.com/analytics.js"
+          ></script>
+        )}
+      </Helmet>
     </>
   );
 }
