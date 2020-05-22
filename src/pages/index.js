@@ -67,11 +67,12 @@ export default function Home(props) {
         </SearchContainer>
 
         <WhiteContainer>
-          {categories.map((category) => (
+          {categories.map((category, index) => (
             <CategoryCard
               title={category.name}
               url={`/${category.slug}/`}
               description={category.description.description}
+              key={index}
             />
           ))}
         </WhiteContainer>
