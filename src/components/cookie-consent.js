@@ -22,6 +22,10 @@ const Banner = styled(WhiteContainer)`
 
     padding: 20px 25px;
   }
+
+  @media print {
+    display: none;
+  }
 `;
 
 const Text = styled.p`
