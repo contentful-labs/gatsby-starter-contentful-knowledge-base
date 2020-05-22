@@ -139,7 +139,7 @@ export default function Article(props) {
 
 export const query = graphql`
   query Article($id: String) {
-    article: contentfulArticle(id: { eq: $id }) {
+    article: contentfulKbAppArticle(id: { eq: $id }) {
       title
       slug
       description {
@@ -148,7 +148,7 @@ export const query = graphql`
       body {
         json
       }
-      category {
+      category: kbAppCategory {
         slug
         name
       }

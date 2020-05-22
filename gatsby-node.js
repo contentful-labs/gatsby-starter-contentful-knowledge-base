@@ -5,23 +5,23 @@ const articleTemplate = path.resolve('src/templates/article.js');
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
   const result = await graphql(`
     {
-      categories: allContentfulCategory {
+      categories: allContentfulKbAppCategory {
         nodes {
           id
           slug
           name
-          articles: article {
+          articles: kbapparticle {
             id
           }
         }
       }
 
-      articles: allContentfulArticle {
+      articles: allContentfulKbAppArticle {
         nodes {
           id
           slug
           title
-          category {
+          category: kbAppCategory {
             slug
           }
         }

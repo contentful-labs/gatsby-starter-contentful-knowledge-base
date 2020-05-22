@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 export default function useSiteSettings() {
   const data = useStaticQuery(graphql`
     query Settings {
-      settings: allContentfulSiteSettings {
+      settings: allContentfulKbAppSiteSettings {
         nodes {
           headerLinks {
             text
@@ -12,12 +12,16 @@ export default function useSiteSettings() {
           heading
           subheading
           siteName
+          description: siteDescription {
+            siteDescription
+          }
           logo {
             title
             fixed(width: 160) {
               src
             }
           }
+          googleAnalyticsId
         }
       }
     }
