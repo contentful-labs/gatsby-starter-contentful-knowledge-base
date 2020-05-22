@@ -101,23 +101,23 @@ export default function Section(props) {
 
 export const query = graphql`
   query PageData($id: String) {
-    categories: allContentfulCategory {
+    categories: allContentfulKbAppCategory {
       nodes {
         name
         slug
-        articles: article {
+        articles: kbapparticle {
           id
         }
       }
     }
 
-    category: contentfulCategory(id: { eq: $id }) {
+    category: contentfulKbAppCategory(id: { eq: $id }) {
       name
       description {
         description
       }
       slug
-      articles: article {
+      articles: kbapparticle {
         title
         slug
       }

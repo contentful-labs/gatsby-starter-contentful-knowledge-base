@@ -6,7 +6,8 @@ import useSiteSettings from '../hooks/useSiteSettings';
 export default function SEO(props) {
   const settings = useSiteSettings();
   const { title, description, siteName, lang } = props;
-  const name = siteName ?? settings.siteName;
+  const headerName = siteName ?? settings.siteName;
+  const headerDescription = description ?? settings.description.siteDescription;
 
   return (
     <Helmet
@@ -17,7 +18,7 @@ export default function SEO(props) {
       meta={[
         {
           name: 'description',
-          content: description,
+          content: headerDescription,
         },
         {
           property: `og:title`,
@@ -25,7 +26,7 @@ export default function SEO(props) {
         },
         {
           property: `og:description`,
-          content: description,
+          content: headerDescription,
         },
         {
           name: `twitter:title`,
@@ -33,11 +34,11 @@ export default function SEO(props) {
         },
         {
           name: `twitter:description`,
-          content: description,
+          content: headerDescription,
         },
       ]}
-      titleTemplate={`%s | ${name}`}
-      defaultTitle={name}
+      titleTemplate={`%s | ${headerName}`}
+      defaultTitle={headerName}
     ></Helmet>
   );
 }

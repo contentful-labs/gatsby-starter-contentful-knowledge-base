@@ -51,7 +51,10 @@ export default function Home(props) {
 
   return (
     <Layout>
-      <SEO title={settings.heading} description={settings.subheading} />
+      <SEO
+        title={settings.heading}
+        description={settings.description?.siteDescription}
+      />
 
       <Container>
         <Hgroup>
@@ -79,14 +82,14 @@ export default function Home(props) {
 
 export const query = graphql`
   query {
-    categories: allContentfulCategory {
+    categories: allContentfulKbAppCategory {
       nodes {
         name
         description {
           description
         }
         slug
-        articles: article {
+        articles: kbapparticle {
           id
         }
       }

@@ -5,10 +5,11 @@ require('dotenv').config({
 module.exports = {
   plugins: [
     {
-      resolve: `gatsby-source-contentful`,
+      resolve: 'gatsby-source-contentful',
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_API_TOKEN,
+        useNameForId: false,
       },
     },
     'gatsby-plugin-react-helmet',
@@ -20,12 +21,12 @@ module.exports = {
         engineOptions: 'speed',
         query: `
             {
-              articles: allContentfulArticle {
+              articles: allContentfulKbAppArticle {
                 nodes {
                   contentful_id
                   title
                   slug
-                  category {
+                  category: kbAppCategory {
                     slug
                   }
                 }
