@@ -38,4 +38,9 @@ jobs:
         run: npm ci
 
       - name: Build
+        env:
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+          CONTENTFUL_API_TOKEN: ${{ secrets.CONTENTFUL_API_TOKEN }}
+          CONTENTFUL_PREVIEW_TOKEN: ${{ secrets.CONTENTFUL_PREVIEW_TOKEN }}
+          URL: http://localhost:5000
         run: npm run build
