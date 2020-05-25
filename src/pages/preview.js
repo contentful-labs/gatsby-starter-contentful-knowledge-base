@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import is from 'prop-types';
 import Article from '../templates/article';
 
 const url = `https://preview.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}`;
@@ -12,7 +13,7 @@ export default function Preview(props) {
     if (!params.get('entry')) return;
 
     fetchContent();
-  }, []);
+  }, []); // eslint-disable-line
 
   async function fetchContent() {
     const [draft, categories] = await Promise.all([
@@ -40,7 +41,7 @@ export default function Preview(props) {
 
   async function getDraftEntry() {
     const res = await fetch(
-      `${url}/entries/${params.get('entry')}?access_token=${previewToken}`,
+      `${url}/entries/${params.get('entry')}?access_token=${previewToken}`
     );
 
     if (!res.ok) return;
@@ -52,7 +53,7 @@ export default function Preview(props) {
 
   async function getDraftCategory(categoryId) {
     const res = await fetch(
-      `${url}/entries/${categoryId}?access_token=${previewToken}`,
+      `${url}/entries/${categoryId}?access_token=${previewToken}`
     );
 
     if (!res.ok) return;
@@ -64,7 +65,7 @@ export default function Preview(props) {
 
   async function getDraftCategories() {
     const res = await fetch(
-      `${url}/entries/?content_type=kbAppCategory&access_token=${previewToken}`,
+      `${url}/entries/?content_type=kbAppCategory&access_token=${previewToken}`
     );
 
     if (!res.ok) return;
@@ -83,3 +84,9 @@ export default function Preview(props) {
 
   return <Article data={data} />;
 }
+
+Preview.propTypes = {
+  location: is.shape({
+    search: is.string.isRequired,
+  }).isRequired,
+};

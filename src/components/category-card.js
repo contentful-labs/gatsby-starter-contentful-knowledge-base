@@ -1,4 +1,5 @@
 import React from 'react';
+import is from 'prop-types';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 
@@ -59,3 +60,9 @@ export default function CategoryCard(props) {
     </Container>
   );
 }
+
+CategoryCard.propTypes = {
+  url: is.string.isRequired,
+  title: is.string.isRequired,
+  description: is.string,
+};

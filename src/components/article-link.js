@@ -1,4 +1,5 @@
 import React from 'react';
+import is from 'prop-types';
 import styled from '@emotion/styled';
 import { Link as GatsbyLink } from 'gatsby';
 
@@ -59,3 +60,8 @@ export default function ArticleLink(props) {
     </Text>
   );
 }
+
+ArticleLink.propTypes = {
+  url: is.string.isRequired,
+  label: is.string.isRequired,
+};

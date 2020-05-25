@@ -1,4 +1,5 @@
 import React from 'react';
+import is from 'prop-types';
 import { graphql } from 'gatsby';
 import styled from '@emotion/styled';
 import Layout from './layout';
@@ -85,8 +86,9 @@ export default function Section(props) {
         <Cell area="articles">
           <WhiteContainer>
             <ArticleContainer>
-              {category.articles.map((article) => (
+              {category.articles.map((article, index) => (
                 <ArticleLink
+                  key={index}
                   url={`/${category.slug}/${article.slug}/`}
                   label={article.title}
                 />
@@ -98,6 +100,38 @@ export default function Section(props) {
     </Layout>
   );
 }
+
+Section.propTypes = {
+  data: is.shape({
+    categories: is.shape({
+      nodes: is.arrayOf(
+        is.shape({
+          name: is.string.isRequired,
+          slug: is.string.isRequired,
+          articles: is.arrayOf(
+            is.shape({
+              id: is.string.isRequired,
+            })
+          ).isRequired,
+        })
+      ),
+    }),
+    category: is.shape({
+      name: is.string.isRequired,
+      description: is.shape({
+        description: is.string.isRequired,
+      }).isRequired,
+      slug: is.string.isRequired,
+      articles: is.arrayOf(
+        is.shape({
+          title: is.string.isRequired,
+          slug: is.string.isRequired,
+        })
+      ).isRequired,
+      locale: is.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export const query = graphql`
   query PageData($id: String) {

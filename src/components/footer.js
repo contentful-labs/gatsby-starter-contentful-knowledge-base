@@ -1,4 +1,5 @@
 import React from 'react';
+import is from 'prop-types';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import Wrap from './wrap';
@@ -97,3 +98,14 @@ export default function Footer(props) {
     </Wrap>
   );
 }
+
+Footer.propTypes = {
+  logoUrl: is.string.isRequired,
+  logoDescription: is.string.isRequired,
+  links: is.arrayOf(
+    is.shape({
+      url: is.string.isRequired,
+      text: is.string.isRequired,
+    })
+  ).isRequired,
+};

@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React from 'react';
+import is from 'prop-types';
 import styled from '@emotion/styled';
 import { Helmet } from 'react-helmet';
 import Header from '../components/header';
@@ -79,3 +80,8 @@ export default function Layout(props) {
     </>
   );
 }
+
+Layout.propTypes = {
+  withSearch: is.bool,
+  children: is.node.isRequired,
+};

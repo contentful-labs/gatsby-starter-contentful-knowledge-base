@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import is from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
 import styled from '@emotion/styled';
 
@@ -123,3 +124,12 @@ export default function Sidebar(props) {
     </aside>
   );
 }
+
+Sidebar.propTypes = {
+  data: is.arrayOf(
+    is.shape({
+      slug: is.string.isRequired,
+      name: is.string.isRequired,
+    })
+  ).isRequired,
+};
