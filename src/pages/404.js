@@ -38,7 +38,7 @@ export default function Article() {
         description="The page you are looking for can’t be found."
       />
 
-      <Title>The page you are looking for can’t be found.</Title>
+      <Title>The page page you are looking for can’t be found.</Title>
       <SubTitle>Error code: 404</SubTitle>
       <Link to="/">Return to home page</Link>
     </Layout>
