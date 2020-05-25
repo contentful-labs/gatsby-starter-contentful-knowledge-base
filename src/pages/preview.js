@@ -19,7 +19,7 @@ export default function Preview(props) {
       getDraftEntry(),
       getDraftCategories(),
     ]);
-    const category = await getDraftCategory(draft.fields.category.sys.id);
+    const category = await getDraftCategory(draft.fields.kbAppCategory.sys.id);
 
     setData((currData) => ({
       ...currData,
@@ -64,7 +64,7 @@ export default function Preview(props) {
 
   async function getDraftCategories() {
     const res = await fetch(
-      `${url}/entries/?content_type=category&access_token=${previewToken}`,
+      `${url}/entries/?content_type=kbAppCategory&access_token=${previewToken}`,
     );
 
     if (!res.ok) return;
