@@ -1,6 +1,6 @@
 {
   "name": "help-center-marketplace-app",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "eslint": "eslint 'src/**/*.js' --max-warnings=0",
-    "format": "prettier --write \"src/**/*.+(js|jsx|json|yml|yaml|css|md)\""
+    "format": "prettier --write \"src/**/*.+(js|jsx|json|yml|yaml|css|md)\"",
+    "semantic-release": "semantic-release"
   },
   "husky": {
     "hooks": {
@@ -27,15 +28,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/contentful/help-center-marketplace-app.git"
+    "url": "https://github.com/cezarsmpio/help-center-gatsby-template.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/contentful/help-center-marketplace-app/issues"
+    "url": "https://github.com/cezarsmpio/help-center-gatsby-template/issues"
   },
-  "homepage": "https://github.com/contentful/help-center-marketplace-app#readme",
+  "homepage": "https://github.com/cezarsmpio/help-center-gatsby-template#readme",
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^13.4.0",
     "@contentful/rich-text-types": "^14.1.0",
@@ -58,6 +59,10 @@
     "react-use-flexsearch": "^0.1.1"
   },
   "devDependencies": {
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/github": "^7.0.7",
+    "@semantic-release/release-notes-generator": "^9.0.1",
     "eslint": "^7.0.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-react-app": "^5.2.1",
@@ -65,6 +70,7 @@
     "eslint-plugin-react": "^7.20.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.6",
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.4",
+    "semantic-release": "^17.0.8"
   }
 }
