@@ -6,6 +6,7 @@ import Footer from '../components/footer';
 import Wrap from '../components/wrap';
 import useSiteSettings from '../hooks/useSiteSettings';
 import SearchForm from '../components/search-form';
+import CookieConsent from '../components/cookie-consent';
 
 const UpperContainer = styled.div`
   margin-bottom: 24px;
@@ -54,6 +55,8 @@ export default function Layout(props) {
         logoUrl={settings.logo.fixed.src}
         logoDescription={settings.logo.title}
       />
+
+      <CookieConsent />
 
       <Helmet>
         {settings.googleAnalyticsId && (
