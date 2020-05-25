@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/cezarsmpio/help-center-gatsby-template/compare/v1.0.0...v1.0.1) (2020-05-25)
+
+### Bug Fixes
+
+- add changelog content for v1.0.0 ([04c7bdf](https://github.com/cezarsmpio/help-center-gatsby-template/commit/04c7bdf84110ab6f3f4317bed615fc1932fdfc25))
+
 # 1.0.0 (2020-05-25)
 
 ### Bug Fixes
