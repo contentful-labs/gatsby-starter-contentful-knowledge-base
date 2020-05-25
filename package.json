@@ -11,11 +11,13 @@
     "clean": "gatsby clean",
     "eslint": "eslint 'src/**/*.js' --max-warnings=0",
     "format": "prettier --write \"src/**/*.+(js|jsx|json|yml|yaml|css|md)\"",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "commitlint": "commitlint"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
@@ -59,6 +61,8 @@
     "react-use-flexsearch": "^0.1.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@semantic-release/commit-analyzer": "^8.0.1",
     "@semantic-release/git": "^9.0.0",
     "@semantic-release/github": "^7.0.7",

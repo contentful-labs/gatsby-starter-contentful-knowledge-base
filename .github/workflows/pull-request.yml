@@ -44,3 +44,16 @@ jobs:
           CONTENTFUL_PREVIEW_TOKEN: ${{ secrets.CONTENTFUL_PREVIEW_TOKEN }}
           URL: http://localhost:5000
         run: npm run build
+
+  commit:
+    name: Commit Analyzer
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone Repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Analyze commits
+        uses: wagoid/commitlint-github-action@v1
