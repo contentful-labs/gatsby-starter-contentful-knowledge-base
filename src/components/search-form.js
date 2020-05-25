@@ -74,7 +74,7 @@ export default function SearchForm() {
   const searchResults = useFlexSearch(
     debouncedQuery,
     localSearchArticles.index,
-    JSON.parse(localSearchArticles.store),
+    JSON.parse(localSearchArticles.store)
   );
   const [isLoading, setIsLoading] = useState(false);
   const [isResultsOpened, setIsResultsOpened] = useState(false);

@@ -111,9 +111,9 @@ Section.propTypes = {
           articles: is.arrayOf(
             is.shape({
               id: is.string.isRequired,
-            }),
+            })
           ).isRequired,
-        }),
+        })
       ),
     }),
     category: is.shape({
@@ -126,7 +126,7 @@ Section.propTypes = {
         is.shape({
           title: is.string.isRequired,
           slug: is.string.isRequired,
-        }),
+        })
       ).isRequired,
       locale: is.string.isRequired,
     }).isRequired,

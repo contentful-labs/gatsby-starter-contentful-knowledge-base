@@ -54,6 +54,6 @@ Breadcrumb.propTypes = {
     is.shape({
       name: is.string.isRequired,
       url: is.string,
-    }),
+    })
   ),
 };

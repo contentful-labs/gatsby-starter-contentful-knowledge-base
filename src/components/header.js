@@ -177,6 +177,6 @@ Header.propTypes = {
     is.shape({
       url: is.string.isRequired,
       text: is.string.isRequired,
-    }),
+    })
   ).isRequired,
 };

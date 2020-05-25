@@ -41,7 +41,7 @@ export default function Preview(props) {
 
   async function getDraftEntry() {
     const res = await fetch(
-      `${url}/entries/${params.get('entry')}?access_token=${previewToken}`,
+      `${url}/entries/${params.get('entry')}?access_token=${previewToken}`
     );
 
     if (!res.ok) return;
@@ -53,7 +53,7 @@ export default function Preview(props) {
 
   async function getDraftCategory(categoryId) {
     const res = await fetch(
-      `${url}/entries/${categoryId}?access_token=${previewToken}`,
+      `${url}/entries/${categoryId}?access_token=${previewToken}`
     );
 
     if (!res.ok) return;
@@ -65,7 +65,7 @@ export default function Preview(props) {
 
   async function getDraftCategories() {
     const res = await fetch(
-      `${url}/entries/?content_type=kbAppCategory&access_token=${previewToken}`,
+      `${url}/entries/?content_type=kbAppCategory&access_token=${previewToken}`
     );
 
     if (!res.ok) return;

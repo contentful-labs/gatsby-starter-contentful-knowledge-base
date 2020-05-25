@@ -95,9 +95,9 @@ Home.propTypes = {
           articles: is.arrayOf(
             is.shape({
               id: is.string.isRequired,
-            }),
+            })
           ),
-        }),
+        })
       ),
     }).isRequired,
   }).isRequired,

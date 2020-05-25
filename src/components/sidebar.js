@@ -130,6 +130,6 @@ Sidebar.propTypes = {
     is.shape({
       slug: is.string.isRequired,
       name: is.string.isRequired,
-    }),
+    })
   ).isRequired,
 };

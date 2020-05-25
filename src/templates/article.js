@@ -129,7 +129,7 @@ export default function Article(props) {
           <ArticleContentContainer>
             {documentToReactComponents(
               props.data.article.body.json,
-              rendererOptions({ locale: article.locale }),
+              rendererOptions({ locale: article.locale })
             )}
           </ArticleContentContainer>
         </WhiteContainer>
