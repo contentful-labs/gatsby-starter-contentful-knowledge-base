@@ -14,17 +14,15 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run eslint && npm run format"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
     "*.+(js|jsx)": [
-      "eslint --max-warnings=0",
-      "git add"
+      "eslint --max-warnings=0"
     ],
-    "*.+(json|css|md)": [
-      "prettier --write",
-      "git add"
+    "*.+(js|jsx|json|yml|yaml|css|md)": [
+      "prettier --write"
     ]
   },
   "repository": {
