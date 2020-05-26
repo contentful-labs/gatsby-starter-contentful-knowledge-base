@@ -30,15 +30,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cezarsmpio/help-center-gatsby-template.git"
+    "url": "https://github.com/cezarsmpio/gatsby-knowledge-base-contentful-starter.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cezarsmpio/help-center-gatsby-template/issues"
+    "url": "https://github.com/cezarsmpio/gatsby-knowledge-base-contentful-starter/issues"
   },
-  "homepage": "https://github.com/cezarsmpio/help-center-gatsby-template#readme",
+  "homepage": "https://github.com/cezarsmpio/gatsby-knowledge-base-contentful-starter#readme",
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^13.4.0",
     "@contentful/rich-text-types": "^14.1.0",
