@@ -52,7 +52,7 @@ const Button = styled.button`
 `;
 
 export default function CookieConsent() {
-  const [hasAgreed, setHasAgreed] = useState(false);
+  const [hasAgreed, setHasAgreed] = useState(true);
 
   useEffect(() => {
     setHasAgreed(localStorage.getItem('cookie-consent') === 'yes');
