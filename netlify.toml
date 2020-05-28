@@ -8,4 +8,4 @@
 
 [build]
   publish = "public/"
-  command = "echo '\n.github/' >> .gitignore && npm run build"
+  command = "npm run build"
