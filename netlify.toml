@@ -8,4 +8,4 @@
 
 [build]
   publish = "public/"
-  command = "npm run build"
+  command = "rm -rf ./.github && npm run build"
