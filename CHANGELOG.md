@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/cezarsmpio/gatsby-knowledge-base-contentful-starter/compare/v1.0.2...v1.0.3) (2020-05-28)
+
+
+### Bug Fixes
+
+* resolve cookie consent banner flickering ([34c462e](https://github.com/cezarsmpio/gatsby-knowledge-base-contentful-starter/commit/34c462e705cfee1ba7bcb4546a83742c08732367))
+
 ## [1.0.2](https://github.com/cezarsmpio/help-center-gatsby-template/compare/v1.0.1...v1.0.2) (2020-05-25)
 
 
