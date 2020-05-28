@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/cezarsmpio/gatsby-knowledge-base-contentful-starter/compare/v1.0.3...v1.0.4) (2020-05-28)
+
+
+### Bug Fixes
+
+* remove .github workflows when building on netlify ([6f813d0](https://github.com/cezarsmpio/gatsby-knowledge-base-contentful-starter/commit/6f813d0d81a3c5782696fc60402142717373343a))
+
 ## [1.0.3](https://github.com/cezarsmpio/gatsby-knowledge-base-contentful-starter/compare/v1.0.2...v1.0.3) (2020-05-28)
 
 
