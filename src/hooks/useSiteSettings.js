@@ -12,9 +12,7 @@ export default function useSiteSettings() {
           heading
           subheading
           siteName
-          description: siteDescription {
-            siteDescription
-          }
+          description: siteDescriptionSeo
           logo {
             title
             fixed(width: 160) {

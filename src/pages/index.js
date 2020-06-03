@@ -52,10 +52,7 @@ export default function Home(props) {
 
   return (
     <Layout>
-      <SEO
-        title={settings.heading}
-        description={settings.description?.siteDescription}
-      />
+      <SEO title={settings.heading} description={settings.description} />
 
       <Container>
         <Hgroup>
@@ -72,7 +69,7 @@ export default function Home(props) {
             <CategoryCard
               title={category.name}
               url={`/${category.slug}/`}
-              description={category.description.description}
+              description={category.description}
               key={index}
             />
           ))}
@@ -89,9 +86,7 @@ Home.propTypes = {
         is.shape({
           name: is.string.isRequired,
           slug: is.string.isRequired,
-          description: is.shape({
-            description: is.string.isRequired,
-          }).isRequired,
+          description: is.string.isRequired,
           articles: is.arrayOf(
             is.shape({
               id: is.string.isRequired,
@@ -108,9 +103,7 @@ export const query = graphql`
     categories: allContentfulKbAppCategory {
       nodes {
         name
-        description {
-          description
-        }
+        description: previewDescription
         slug
         articles: kbapparticle {
           id

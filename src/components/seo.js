@@ -7,7 +7,7 @@ export default function SEO(props) {
   const settings = useSiteSettings();
   const { title, description, siteName, lang } = props;
   const headerName = siteName ?? settings.siteName;
-  const headerDescription = description ?? settings.description.siteDescription;
+  const headerDescription = description ?? settings.description;
 
   return (
     <Helmet

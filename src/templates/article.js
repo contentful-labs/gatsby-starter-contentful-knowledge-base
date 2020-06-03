@@ -110,7 +110,7 @@ export default function Article(props) {
     <Layout withSearch={true}>
       <SEO
         title={article.title}
-        description={article.description.description}
+        description={article.description}
         lang={article.locale}
       />
 
@@ -142,9 +142,7 @@ Article.propTypes = {
   data: is.shape({
     article: is.shape({
       title: is.string.isRequired,
-      description: is.shape({
-        description: is.string.isRequired,
-      }).isRequired,
+      description: is.string.isRequired,
       locale: is.string.isRequired,
       category: is.shape({
         slug: is.string.isRequired,
@@ -162,9 +160,7 @@ export const query = graphql`
     article: contentfulKbAppArticle(id: { eq: $id }) {
       title
       slug
-      description {
-        description
-      }
+      description: metaDescription
       body {
         json
       }

@@ -59,7 +59,7 @@ export default function Section(props) {
     <Layout withSearch={true}>
       <SEO
         title={category.name}
-        description={category.description.description}
+        description={category.description}
         lang={category.locale}
       />
 
@@ -73,9 +73,7 @@ export default function Section(props) {
         <Cell area="title-group">
           <TitleGroup>
             <CategoryTitle>{category.name}</CategoryTitle>
-            <CategoryDescription>
-              {category.description.description}
-            </CategoryDescription>
+            <CategoryDescription>{category.description}</CategoryDescription>
           </TitleGroup>
         </Cell>
 
@@ -118,9 +116,7 @@ Section.propTypes = {
     }),
     category: is.shape({
       name: is.string.isRequired,
-      description: is.shape({
-        description: is.string.isRequired,
-      }).isRequired,
+      description: is.string.isRequired,
       slug: is.string.isRequired,
       articles: is.arrayOf(
         is.shape({
@@ -147,9 +143,7 @@ export const query = graphql`
 
     category: contentfulKbAppCategory(id: { eq: $id }) {
       name
-      description {
-        description
-      }
+      description: previewDescription
       slug
       articles: kbapparticle {
         title
