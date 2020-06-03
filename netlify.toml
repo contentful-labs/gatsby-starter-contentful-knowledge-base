@@ -2,9 +2,9 @@
   incoming-hooks = ["Contentful"]
 
 [template.environment]
-  CONTENTFUL_SPACE_ID = ""
-  CONTENTFUL_API_TOKEN = ""
-  CONTENTFUL_PREVIEW_TOKEN = ""
+  SPACE_ID_REQUIRED = ""
+  CONTENTFUL_DELIVERY_API_TOKEN_REQUIRED = ""
+  CONTENTFUL_PREVIEW_API_TOKEN_REQUIRED = ""
 
 [build]
   publish = "public/"

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import is from 'prop-types';
 import Article from '../templates/article';
 
-const url = `https://preview.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}`;
-const previewToken = process.env.CONTENTFUL_PREVIEW_TOKEN;
+const url = `https://preview.contentful.com/spaces/${process.env.SPACE_ID_REQUIRED}`;
+const previewToken = process.env.CONTENTFUL_PREVIEW_API_TOKEN_REQUIRED;
 
 export default function Preview(props) {
   const [data, setData] = useState();

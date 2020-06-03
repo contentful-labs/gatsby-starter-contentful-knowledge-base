@@ -7,8 +7,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-contentful',
       options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_API_TOKEN,
+        spaceId: process.env.SPACE_ID_REQUIRED,
+        accessToken: process.env.CONTENTFUL_DELIVERY_API_TOKEN_REQUIRED,
         useNameForId: false,
       },
     },
@@ -72,9 +72,9 @@ module.exports = {
       resolve: `gatsby-plugin-env-variables`,
       options: {
         whitelist: [
-          'CONTENTFUL_SPACE_ID',
-          'CONTENTFUL_API_TOKEN',
-          'CONTENTFUL_PREVIEW_TOKEN',
+          'SPACE_ID_REQUIRED',
+          'CONTENTFUL_DELIVERY_API_TOKEN_REQUIRED',
+          'CONTENTFUL_PREVIEW_API_TOKEN_REQUIRED',
           'URL',
         ],
       },
