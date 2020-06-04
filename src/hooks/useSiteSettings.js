@@ -17,6 +17,9 @@ export default function useSiteSettings() {
             title
             fixed(width: 160) {
               src
+              srcSet
+              width
+              height
             }
           }
           googleAnalyticsId

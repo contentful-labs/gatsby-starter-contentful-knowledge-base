@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import Wrap from './wrap';
 import { HamburgerIcon, CloseIcon } from './icons';
+import Logo from './logo';
 
 const HeaderWrap = styled(Wrap)`
   margin-bottom: 12px;
@@ -110,14 +111,12 @@ export default function Header(props) {
     setIsMenuOpened(false);
   }
 
-  function renderLogo() {
-    return <img src={props.logoUrl} alt={props.logoDescription} />;
-  }
-
   return (
     <HeaderWrap>
       <HeaderContainerDesktop>
-        <Link to="/">{renderLogo()}</Link>
+        <Link to="/">
+          <Logo />
+        </Link>
         <LinksNav>
           {props.links.map((link, index) => (
             <Anchor
@@ -134,7 +133,9 @@ export default function Header(props) {
 
       <HeaderContainerMobile>
         <div>
-          <Link to="/">{renderLogo()}</Link>
+          <Link to="/">
+            <Logo />
+          </Link>
         </div>
 
         <HamburgerIcon onClick={openMenu} />
@@ -146,7 +147,7 @@ export default function Header(props) {
         <MobileContainer>
           <MobileMenuLogoContainer>
             <Link to="/" onClick={closeMenu}>
-              {renderLogo()}
+              <Logo />
             </Link>
             <CloseIcon onClick={closeMenu} />
           </MobileMenuLogoContainer>
@@ -171,8 +172,6 @@ export default function Header(props) {
 }
 
 Header.propTypes = {
-  logoUrl: is.string.isRequired,
-  logoDescription: is.string.isRequired,
   links: is.arrayOf(
     is.shape({
       url: is.string.isRequired,

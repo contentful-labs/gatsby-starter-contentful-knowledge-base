@@ -34,11 +34,7 @@ export default function Layout(props) {
   return (
     <>
       <UpperContainer>
-        <Header
-          links={settings.headerLinks}
-          logoUrl={settings.logo.fixed.src}
-          logoDescription={settings.logo.title}
-        />
+        <Header links={settings.headerLinks} />
 
         {props.withSearch && (
           <SearchContainer>
@@ -51,11 +47,7 @@ export default function Layout(props) {
 
       <Wrap>{props.children}</Wrap>
 
-      <Footer
-        links={settings.headerLinks}
-        logoUrl={settings.logo.fixed.src}
-        logoDescription={settings.logo.title}
-      />
+      <Footer links={settings.headerLinks} />
 
       <CookieConsent />
 
