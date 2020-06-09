@@ -1,5 +1,5 @@
 [template]
-  incoming-hooks = ["Contentful"]
+  incoming-hooks = ["Contentful - Knowledge base app"]
 
 [template.environment]
   SPACE_ID_REQUIRED = ""
