@@ -77,6 +77,6 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.6",
     "parcel-bundler": "^1.12.4",
-    "semantic-release": "^17.0.8"
+    "semantic-release": "^17.2.3"
   }
 }
