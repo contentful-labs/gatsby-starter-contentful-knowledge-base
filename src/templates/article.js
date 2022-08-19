@@ -1,7 +1,7 @@
 import React from 'react';
 import is from 'prop-types';
 import { graphql } from 'gatsby';
-import { BLOCKS } from '@contentful/rich-text-types';
+import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import styled from '@emotion/styled';
 import Layout from './layout';
@@ -24,6 +24,19 @@ const rendererOptions = ({ locale = 'en-US' }) => ({
           />
         );
       }
+    },
+    [INLINES.ENTRY_HYPERLINK]: function Anchor(node) {
+      const { space, environment, id } = node.data.target.sys;
+      const { value } = node.content[0];
+      return (
+        <a
+          href={`https://app.contentful.com/spaces/${space.sys.id}/environments/${environment.sys.id}/entries/${id}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {value}
+        </a>
+      );
     },
   },
 });

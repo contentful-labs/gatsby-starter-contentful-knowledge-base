@@ -40,8 +40,8 @@
   },
   "homepage": "https://github.com/cezarsmpio/gatsby-knowledge-base-contentful-starter#readme",
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "^13.4.0",
-    "@contentful/rich-text-types": "^14.1.0",
+    "@contentful/rich-text-react-renderer": "15.12.1",
+    "@contentful/rich-text-types": "15.12.1",
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
     "gatsby": "^2.21.11",
