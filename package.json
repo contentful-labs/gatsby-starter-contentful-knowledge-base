@@ -44,7 +44,7 @@
     "@contentful/rich-text-types": "^14.1.0",
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
-    "gatsby": "^2.21.11",
+    "gatsby": "^2.32.13",
     "gatsby-plugin-env-variables": "^1.0.2",
     "gatsby-plugin-local-search": "^1.1.1",
     "gatsby-plugin-netlify": "^2.3.3",
