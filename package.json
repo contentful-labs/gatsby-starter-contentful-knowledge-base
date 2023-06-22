@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "gatsby develop",
-    "build": "gatsby build",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
+    "build": "NODE_OPTIONS='--openssl-legacy-provider' gatsby build",
+    "serve": "NODE_OPTIONS='--openssl-legacy-provider' gatsby serve",
+    "clean": "NODE_OPTIONS='--openssl-legacy-provider' gatsby clean",
     "eslint": "eslint 'src/**/*.js' --max-warnings=0",
     "format": "prettier --write \"src/**/*.+(js|jsx|json|yml|yaml|css|md)\"",
     "semantic-release": "semantic-release",
